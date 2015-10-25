@@ -20,6 +20,11 @@ Then add a `<script>` to your `index.html`:
   <script src="/bower_components/angular-auto-save-form/auto-save-form.js"></script>
 ```
 
+Include 'autoSaveForm' as a dependency of your module like this:
+```JavaScript
+  var module = angular.module("example", ["autoSaveForm"]);
+```
+
 ## Usage
 
 ### Default usage:
