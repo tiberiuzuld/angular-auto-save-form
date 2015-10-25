@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  angular.module('autoSaveForm', [])
+  angular.module('angular-auto-save-form', [])
     .provider('autoSaveForm', autoSaveFormProvider)
     .directive('autoSaveForm', autoSaveForm);
 

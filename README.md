@@ -22,7 +22,7 @@ Then add a `<script>` to your `index.html`:
 
 Include 'autoSaveForm' as a dependency of your module like this:
 ```JavaScript
-  var module = angular.module("example", ["autoSaveForm"]);
+  var module = angular.module("example", ["angular-auto-save-form"]);
 ```
 
 ## Usage

@@ -1,6 +1,6 @@
 {
   "name": "angular-auto-save-form",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "~2.9.11",
@@ -79,5 +79,5 @@
     "gulpfile.js",
     "karma.conf.js",
     "protractor.conf.js"
-  ],
+  ]
 }
