@@ -17,7 +17,7 @@ The directive will call the callback function with a parameter object containing
 Then add a `<script>` to your `index.html`:
 
 ```html
-  <script src="/bower_components/angular-auto-save-form/angular-auto-save-form.js"></script>
+  <script src="/bower_components/angular-auto-save-form/auto-save-form.js"></script>
 ```
 
 ## Usage
