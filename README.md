@@ -7,9 +7,7 @@ angular-auto-save-form
 Angular auto save form changed inputs.  
 The directive will call the callback function with a parameter object containing only the inputs that are $dirty.
  
-## Demo
- 
- TODO add demo url
+#### [Demo](http://tiberiuzuld.github.io/angular-auto-save-form)
  
 #### Install with Bower
 ```bash
