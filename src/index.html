@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="autoSaveFormApp">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Auto Save Form</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body ng-controller="IndexController as vm">
+
+<ng-form name="autoSaveForm" auto-save-form="vm.updateForm" auto-save-form-debounce="200">
+  <label class="section-label">Auto Save Form Example</label>
+  <label>Name</label>
+  <input ng-model="vm.user.name" name="name" required minlength="3"/>
+  <label>City</label>
+  <input ng-model="vm.user.city" name="city" required minlength="3"/>
+  <label>Country</label>
+  <input ng-model="vm.user.country" name="country" required minlength="3"/>
+  <label>Language</label>
+  <select ng-model="vm.user.language" name="language" required
+          ng-options="language for language in vm.languages"></select>
+  <label class="section-label">Sent object</label>
+  <span ng-bind="vm.savedObject"></span>
+  <span class="progress" ng-show="vm.saveInProgress">Saving</span>
+</ng-form>
+
+<form name="normalSaveForm" auto-save-form="vm.updateNormalForm" auto-save-form-mode="false">
+  <label class="section-label">Normal Save Form Example</label>
+  <label>Name</label>
+  <input ng-model="vm.userNormal.name" name="userNormal.name"/>
+  <label>City</label>
+  <input ng-model="vm.userNormal.city" name="userNormal.city"/>
+  <label>Country</label>
+  <input ng-model="vm.userNormal.country" name="userNormal.country"/>
+  <label>Language</label>
+  <select ng-model="vm.userNormal.language" name="language" required
+          ng-options="language for language in vm.languages"></select>
+  <button type="submit" ng-disabled="normalSaveForm.$invalid || normalSaveForm.$pristine">Save</button>
+  <label class="section-label">Sent object</label>
+  <span ng-bind="vm.savedObjectNormal"></span>
+  <span class="progress" ng-show="vm.normalSaveInProgress">Saving</span>
+</form>
+
+<!-- build:js(src) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(src) auto-save-form.js -->
+<!-- inject:directive:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
+</html>

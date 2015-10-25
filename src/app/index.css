@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+ng-form, form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 40%;
+  max-width: 300px;
+}
+
+input, select, label, button {
+  margin: 5px;
+  padding: 5px;
+  display: block;
+}
+
+.section-label {
+  padding-top: 20px;
+  font-weight: 600;
+}
+
+input.ng-invalid {
+  outline: 1px solid red;
+}
+
+.progress {
+  color: grey;
+}
