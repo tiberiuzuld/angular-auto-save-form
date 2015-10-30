@@ -76,11 +76,12 @@
         if (formModel.$invalid || formModel.$pristine) {
           return;
         }
+        formModel.$commitViewValue();
         var controls = {};
         //only way to get form controls if angular doesn't implement $getControls on form object
         angular.forEach(formModel, function (value, key) {
-          if (key[0] != '$' && value.$dirty) {
-            constructControlsObject(key.split(/\./gi), value.$viewValue, controls);
+          if (key[0] !== '$' && key[0] !== '.' && value.$dirty) {
+            constructControlsObject(key.split(/\./gi), value.$modelValue, controls);
           }
         });
 
