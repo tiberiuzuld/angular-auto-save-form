@@ -11,8 +11,7 @@
 
   /** @ngInject */
   function IndexMocks($httpBackend) {
-
-    var delay = 10;
+    var delay = 500;
     var user = {
       name: 'Jon Doe',
       city: 'New York',
@@ -35,9 +34,9 @@
       return [200, data];
     }, delay);
 
-    $httpBackend.whenGET(/getDataNormal/).respond(userNormal, delay);
+    $httpBackend.whenGET(/getDataNormal/).respond(userNormal);
 
-    $httpBackend.whenGET(/getData/).respond(user, delay);
+    $httpBackend.whenGET(/getData/).respond(user);
   }
   IndexMocks.$inject = ["$httpBackend"];
 })();
@@ -64,19 +63,13 @@
     });
 
     vm.updateForm = function (formControls) {
-      vm.saveInProgress = true;
       vm.savedObject = angular.toJson(formControls);
-      $http.post('/updateData', formControls).then(function () {
-        vm.saveInProgress = false;
-      });
+      return $http.post('/updateData', formControls);
     };
 
     vm.updateNormalForm = function (formControls) {
-      vm.normalSaveInProgress = true;
-      vm.savedObjectNormal = angular.toJson(formControls);
-      $http.post('/updateDataNormal', formControls).then(function () {
-        vm.normalSaveInProgress = false;
-      });
+      vm.savedObject = angular.toJson(formControls);
+      return $http.post('/updateDataNormal', formControls);
     }
   }
   IndexController.$inject = ["$http"];
@@ -95,6 +88,8 @@
 
     autoSaveFormProvider.setDebounce(500);
     autoSaveFormProvider.setAutoSaveMode(true);
+    autoSaveFormProvider.setSpinner(true);
+    autoSaveFormProvider.setSpinnerPosition('top right');
   }
   config.$inject = ["$logProvider", "$compileProvider", "autoSaveFormProvider"];
 
