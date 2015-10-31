@@ -44,18 +44,41 @@ Which expects a scope setup like the following:
   
   //changing input user.name the callback function will be called with parameter object
   $scope.callback = function(controls){ // controls = {'name': 'Jon Doe'}
-      $http.post('saveDataUrl', controls);
+      return $http.post('saveDataUrl', controls);
   };
 ```
 
-#### Optional attribute:
+#### Optional attributes:
 
-If you want to change the locally default 500 debounce timer
+If you want to change locally debounce timer
 ```html
-  auto-save-form-debounce="number"
+  auto-save-form-debounce="number" default:500
 ```
 
 If you want to change the debounce at input level use [ng-model-options] directive
+
+Loading spinner in top right corner of the form enabled by default if callback promise returns a promise.
+```html
+  auto-save-form-spinner="boolean"  default:true
+```
+
+```html
+  auto-save-form-spinner-position="string"  default:'top right'
+```
+
+Possible combinations: 'top right', 'top left', 'bottom left', 'bottom right'.  
+It is possible to add your own class without your desired position.  
+Example:
+```css
+[auto-save-form] .spinner.my-class {
+    top: 50%;
+    left: 50%;
+  }
+```
+```html
+  auto-save-form-spinner-position="my-class"
+```
+
 
 ##### The directive supports nested objects like:
 ```JavaScript
@@ -111,8 +134,10 @@ It is optional if the property is set to false globally
 In config phase add autoSaveFormProvider
 
 ```js
-autoSaveFormProvider.setDebounce(number); //change global default 500 debounce timer
-autoSaveFormProvider.setAutoSaveMode(boolean); //disable global default auto save set it false
+  autoSaveFormProvider.setDebounce(500); //change globaly default debounce timer
+  autoSaveFormProvider.setAutoSaveMode(true); //change globaly default auto save mode
+  autoSaveFormProvider.setSpinner(true); //change globaly default spinner
+  autoSaveFormProvider.setSpinnerPosition('top right'); //change globaly default position of the spinner
 ```
 ### License
  The MIT License

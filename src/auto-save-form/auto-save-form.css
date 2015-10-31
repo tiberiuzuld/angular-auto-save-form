@@ -1,0 +1,62 @@
+[auto-save-form] {
+  position: relative;
+}
+
+[auto-save-form] .spinner {
+  font-size: 3px;
+  position: absolute;
+}
+
+[auto-save-form] .spinner.top {
+  top: 10px;
+}
+
+[auto-save-form] .spinner.right {
+  right: 10px;
+}
+
+[auto-save-form] .spinner.left {
+  left: 10px;
+}
+
+[auto-save-form] .spinner.bottom {
+  bottom: 10px;
+}
+
+[auto-save-form] .spinner,
+[auto-save-form] .spinner.spin:after {
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+}
+
+[auto-save-form] .spinner.spin {
+  border-top: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-right: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid rgba(0, 0, 0, 0.7);
+  -webkit-animation: spinnerAnimation 1.1s infinite linear;
+  animation: spinnerAnimation 1.1s infinite linear;
+}
+
+@-webkit-keyframes spinnerAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

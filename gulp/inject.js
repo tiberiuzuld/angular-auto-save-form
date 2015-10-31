@@ -10,9 +10,15 @@ var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
 gulp.task('inject', ['scripts'], function () {
-  var injectStyles = gulp.src([
-    path.join(conf.paths.src, '/app/**/*.css')
+  var injectStylesDirective = gulp.src([
+    path.join(conf.paths.src, '/auto-save-form/**/*.css')
   ], {read: false});
+
+  var stylesInjectOptionsDirective = {
+    starttag: '<!-- inject:directive:css -->',
+    ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
+    addRootSlash: false
+  };
 
   var injectScriptsDirective = gulp.src([
       path.join(conf.paths.src, '/auto-save-form/**/*.module.js'),
@@ -21,11 +27,15 @@ gulp.task('inject', ['scripts'], function () {
     ])
     .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
-  var partialsInjectOptionsDirective = {
+  var scriptsInjectOptionsDirective = {
     starttag: '<!-- inject:directive:js -->',
     ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
     addRootSlash: false
   };
+
+  var injectStyles = gulp.src([
+    path.join(conf.paths.src, '/app/**/*.css')
+  ], {read: false});
 
   var injectScripts = gulp.src([
       path.join(conf.paths.src, '/app/**/*.module.js'),
@@ -40,8 +50,9 @@ gulp.task('inject', ['scripts'], function () {
   };
 
   return gulp.src(path.join(conf.paths.src, '/*.html'))
+    .pipe($.inject(injectStylesDirective, stylesInjectOptionsDirective))
     .pipe($.inject(injectStyles, injectOptions))
-    .pipe($.inject(injectScriptsDirective, partialsInjectOptionsDirective))
+    .pipe($.inject(injectScriptsDirective, scriptsInjectOptionsDirective))
     .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(_.extend({}, conf.wiredep, {dependencies: true, devDependencies: true})))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));

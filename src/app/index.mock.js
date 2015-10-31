@@ -5,8 +5,7 @@
 
   /** @ngInject */
   function IndexMocks($httpBackend) {
-
-    var delay = 10;
+    var delay = 500;
     var user = {
       name: 'Jon Doe',
       city: 'New York',
@@ -29,8 +28,8 @@
       return [200, data];
     }, delay);
 
-    $httpBackend.whenGET(/getDataNormal/).respond(userNormal, delay);
+    $httpBackend.whenGET(/getDataNormal/).respond(userNormal);
 
-    $httpBackend.whenGET(/getData/).respond(user, delay);
+    $httpBackend.whenGET(/getData/).respond(user);
   }
 })();

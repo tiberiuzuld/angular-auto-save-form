@@ -1,6 +1,6 @@
 {
   "name": "angular-auto-save-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "~2.9.11",

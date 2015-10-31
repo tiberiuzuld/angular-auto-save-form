@@ -20,19 +20,13 @@
     });
 
     vm.updateForm = function (formControls) {
-      vm.saveInProgress = true;
       vm.savedObject = angular.toJson(formControls);
-      $http.post('/updateData', formControls).then(function () {
-        vm.saveInProgress = false;
-      });
+      return $http.post('/updateData', formControls);
     };
 
     vm.updateNormalForm = function (formControls) {
-      vm.normalSaveInProgress = true;
-      vm.savedObjectNormal = angular.toJson(formControls);
-      $http.post('/updateDataNormal', formControls).then(function () {
-        vm.normalSaveInProgress = false;
-      });
+      vm.savedObject = angular.toJson(formControls);
+      return $http.post('/updateDataNormal', formControls);
     }
   }
 })();

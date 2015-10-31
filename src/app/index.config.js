@@ -11,6 +11,8 @@
 
     autoSaveFormProvider.setDebounce(500);
     autoSaveFormProvider.setAutoSaveMode(true);
+    autoSaveFormProvider.setSpinner(true);
+    autoSaveFormProvider.setSpinnerPosition('top right');
   }
 
 })();

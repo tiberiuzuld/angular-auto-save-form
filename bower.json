@@ -1,7 +1,10 @@
 {
   "name": "angular-auto-save-form",
-  "version": "0.0.4",
-  "main": "dist/auto-save-form.js",
+  "version": "0.0.5",
+  "main": [
+    "dist/auto-save-form.js",
+    "dist/auto-save-form.css"
+  ],
   "dependencies": {
     "angular": "~1.4.7",
     "lodash": "~3.10.1"
