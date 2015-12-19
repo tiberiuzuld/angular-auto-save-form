@@ -1,28 +1,8 @@
-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+md-whiteframe {
+  min-width: 300px;
+  height: 50%;
 }
 
-ng-form, form {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: 40%;
-  max-width: 300px;
-}
-
-input:not([type='radio']), select, label, button {
-  margin: 5px;
-  padding: 5px;
-  display: block;
-}
-
-.section-label {
-  padding-top: 20px;
-  font-weight: 600;
-}
-
-input.ng-invalid {
-  outline: 1px solid red;
+md-whiteframe span {
+  background: #d5d5d5;
 }
