@@ -49,7 +49,7 @@ Which expects a scope setup like the following:
 ```
 
 For radio inputs or if you want to group inputs on the same property use the [auto-save-form-property] attribute  
-on one the inputs and prefix the name with a group name
+on one of the inputs and prefix the input name with a group name
 
 ```html
   <ng-form name="myForm" auto-save-form="callback"> 
