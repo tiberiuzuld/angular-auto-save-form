@@ -10,14 +10,16 @@
       name: 'Jon Doe',
       city: 'New York',
       country: 'United States of America',
-      language: 'English'
+      language: 'English',
+      gender: 'male'
     };
 
     var userNormal = {
       name: 'Doe Joe',
       city: 'Paris',
       country: 'France',
-      language: 'French'
+      language: 'French',
+      gender: 'female'
     };
 
     $httpBackend.whenPOST(/updateDataNormal/).respond(function (method, url, data) {

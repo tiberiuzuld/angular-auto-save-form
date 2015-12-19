@@ -13,7 +13,7 @@ gulp.task('webdriver-update', $.protractor.webdriver_update);
 
 gulp.task('webdriver-standalone', $.protractor.webdriver_standalone);
 
-function runProtractor (done) {
+function runProtractor(done) {
   var params = process.argv;
   var args = params.length > 3 ? [params[3], params[4]] : [];
 

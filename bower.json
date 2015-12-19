@@ -6,7 +6,7 @@
     "dist/auto-save-form.css"
   ],
   "dependencies": {
-    "angular": "~1.4.7",
+    "angular": "~1.4.8",
     "lodash": "~3.10.1"
   },
   "devDependencies": {

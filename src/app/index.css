@@ -12,7 +12,7 @@ ng-form, form {
   max-width: 300px;
 }
 
-input, select, label, button {
+input:not([type='radio']), select, label, button {
   margin: 5px;
   padding: 5px;
   display: block;

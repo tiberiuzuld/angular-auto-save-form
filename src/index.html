@@ -36,8 +36,15 @@
   <label>Country</label>
   <input ng-model="vm.user.country" name="country" required minlength="3"/>
   <label>Language</label>
-  <select ng-model="vm.user.language" name="language" required
-          ng-options="language for language in vm.languages"></select>
+  <select ng-model="vm.user.language" name="language" required ng-options="language for language in vm.languages">
+  </select>
+
+  <div><input type="radio" ng-model="vm.user.gender" name="inputGroup.gender1"
+              auto-save-form-property="inputGroup.gender" value="male">Male
+  </div>
+  <div><input type="radio" ng-model="vm.user.gender" name="inputGroup.gender2"
+              value="female">Female
+  </div>
 </ng-form>
 <div>
   <label>Examples simulate $http calls</label>
@@ -55,6 +62,11 @@
   <label>Language</label>
   <select ng-model="vm.userNormal.language" name="language" required
           ng-options="language for language in vm.languages"></select>
+
+  <div><input type="radio" ng-model="vm.userNormal.gender" name="inputGroup.gender1"
+              auto-save-form-property="inputGroup.gender" value="male">Male
+  </div>
+  <div><input type="radio" ng-model="vm.userNormal.gender" name="inputGroup.gender2" value="female">Female</div>
   <button type="submit" ng-disabled="normalSaveForm.$invalid || normalSaveForm.$pristine">Save</button>
 </form>
 

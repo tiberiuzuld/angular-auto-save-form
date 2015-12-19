@@ -9,7 +9,8 @@
 
   angular.module('angular-auto-save-form', [])
     .provider('autoSaveForm', autoSaveFormProvider)
-    .directive('autoSaveForm', autoSaveForm);
+    .directive('autoSaveForm', autoSaveForm)
+    .directive('autoSaveFormProperty', autoSaveFormProperty);
 
   /** @ngInject */
   function autoSaveFormProvider() {
@@ -53,10 +54,6 @@
   /** @ngInject */
   function autoSaveForm(autoSaveForm) {
     var spinnerTemplate = '<div class="spinner"></div>';
-    return {
-      restrict: 'A',
-      link: saveFormLink
-    };
 
     function saveFormLink(scope, element, attributes) {
       var formModel = scope.$eval(attributes.name);
@@ -123,7 +120,11 @@
         }
         function checkForm(value, key) {
           if (key[0] !== '$' && key[0] !== '.' && value.$dirty) {
-            constructControlsObject(key.split(/\./gi), value.$modelValue, controls);
+            var keys = key.split(/\./);
+            if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
+              keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
+            }
+            constructControlsObject(keys, value.$modelValue, controls);
           }
         }
 
@@ -141,6 +142,30 @@
         }
       }
     }
+
+    return {
+      restrict: 'A',
+      link: saveFormLink
+    };
   }
   autoSaveForm.$inject = ["autoSaveForm"];
+
+  /** @ngInject */
+  function autoSaveFormProperty() {
+
+    function saveFormLink(scope, element, attributes) {
+      if (attributes.autoSaveFormProperty) {
+        if (angular.isUndefined(scope.autoSaveFormProperties)) {
+          scope.autoSaveFormProperties = {};
+        }
+        var keys = attributes.autoSaveFormProperty.split(/\./);
+        scope.autoSaveFormProperties[keys.splice(0, 1)] = keys.join('.');
+      }
+    }
+
+    return {
+      restrict: 'A',
+      link: saveFormLink
+    };
+  }
 })();
