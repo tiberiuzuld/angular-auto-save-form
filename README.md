@@ -48,6 +48,22 @@ Which expects a scope setup like the following:
   };
 ```
 
+For radio inputs or if you want to group inputs on the same property use the [auto-save-form-property] attribute  
+on one the inputs and prefix the name with a group name
+
+```html
+  <ng-form name="myForm" auto-save-form="callback"> 
+    <input type="radio" ng-model="user.gender" name="inputGroupName.gender1" 
+      auto-save-form-property="inputGroupName.gender" value="male"/>Male
+    <input type="radio" ng-model="user.gender" name="inputGroupName.gender2" value="female"/>Female
+  </ng-form>
+```
+The object will look like this:
+
+```JavaScript
+  //{'gender': 'male'}
+```
+
 #### Optional attributes:
 
 If you want to change locally debounce timer
