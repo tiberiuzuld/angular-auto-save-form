@@ -25,51 +25,75 @@
   <!-- endinject -->
   <!-- endbuild -->
 </head>
-<body ng-controller="IndexController as vm">
+<body ng-controller="IndexController as vm" class="layout-row layout-align-space-around layout-padding">
 
-<ng-form name="autoSaveForm" auto-save-form="vm.updateForm" auto-save-form-debounce="500">
-  <label class="section-label">Auto Save Form Example</label>
-  <label>Name</label>
-  <input ng-model="vm.user.name" name="name" required minlength="3"/>
-  <label>City</label>
-  <input ng-model="vm.user.city" name="city" required minlength="3"/>
-  <label>Country</label>
-  <input ng-model="vm.user.country" name="country" required minlength="3"/>
-  <label>Language</label>
-  <select ng-model="vm.user.language" name="language" required ng-options="language for language in vm.languages">
-  </select>
+<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" class="flex-50">
+  <md-tab label="Auto Save">
+    <ng-form name="autoSaveForm" auto-save-form="vm.updateForm" auto-save-form-debounce="500"
+             class="layout-column layout-padding">
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="vm.user.name" name="name" required minlength="3"/>
+      </md-input-container>
+      <md-input-container>
+        <label>City</label>
+        <input ng-model="vm.user.city" name="city" required minlength="3"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Country</label>
+        <input ng-model="vm.user.country" name="country" required minlength="3"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Language</label>
+        <md-select ng-model="vm.user.language" name="language" required>
+          <md-option ng-repeat="language in vm.languages" ng-value="language" ng-bind="language"></md-option>
+        </md-select>
+      </md-input-container>
+      <md-radio-group ng-model="vm.user.gender" name="gender">
+        <label>Gender</label>
+        <md-radio-button value="male">Male</md-radio-button>
+        <md-radio-button value="female">Female</md-radio-button>
+      </md-radio-group>
+    </ng-form>
+  </md-tab>
+  <md-tab label="Normal Save">
+    <form name="normalSaveForm" auto-save-form="vm.updateNormalForm" auto-save-form-mode="false"
+          class="layout-column layout-padding">
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="vm.userNormal.name" name="userNormal.name"/>
+      </md-input-container>
+      <md-input-container>
+        <label>City</label>
+        <input ng-model="vm.userNormal.city" name="userNormal.city"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Country</label>
+        <input ng-model="vm.userNormal.country" name="userNormal.country"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Language</label>
+        <md-select ng-model="vm.userNormal.language" name="language" required>
+          <md-option ng-repeat="language in vm.languages" ng-value="language" ng-bind="language"></md-option>
+        </md-select>
+      </md-input-container>
+      <md-radio-group ng-model="vm.userNormal.gender" name="gender">
+        <label>Gender</label>
+        <md-radio-button value="male">Male</md-radio-button>
+        <md-radio-button value="female">Female</md-radio-button>
+      </md-radio-group>
+      <md-button type="submit" class="md-raised md-primary"
+                 ng-disabled="normalSaveForm.$invalid || normalSaveForm.$pristine">Save
+      </md-button>
+    </form>
+  </md-tab>
+</md-tabs>
 
-  <div><input type="radio" ng-model="vm.user.gender" name="inputGroup.gender1"
-              auto-save-form-property="inputGroup.gender" value="male">Male
-  </div>
-  <div><input type="radio" ng-model="vm.user.gender" name="inputGroup.gender2"
-              value="female">Female
-  </div>
-</ng-form>
-<div>
-  <label>Examples simulate $http calls</label>
-  <label class="section-label">Sent object</label>
-  <span ng-bind="vm.savedObject"></span>
-</div>
-<form name="normalSaveForm" auto-save-form="vm.updateNormalForm" auto-save-form-mode="false">
-  <label class="section-label">Normal Save Form Example</label>
-  <label>Name</label>
-  <input ng-model="vm.userNormal.name" name="userNormal.name"/>
-  <label>City</label>
-  <input ng-model="vm.userNormal.city" name="userNormal.city"/>
-  <label>Country</label>
-  <input ng-model="vm.userNormal.country" name="userNormal.country"/>
-  <label>Language</label>
-  <select ng-model="vm.userNormal.language" name="language" required
-          ng-options="language for language in vm.languages"></select>
-
-  <div><input type="radio" ng-model="vm.userNormal.gender" name="inputGroup.gender1"
-              auto-save-form-property="inputGroup.gender" value="male">Male
-  </div>
-  <div><input type="radio" ng-model="vm.userNormal.gender" name="inputGroup.gender2" value="female">Female</div>
-  <button type="submit" ng-disabled="normalSaveForm.$invalid || normalSaveForm.$pristine">Save</button>
-</form>
-
+<md-whiteframe class="layout-column md-whiteframe-3dp flex-30">
+  <label class="section-label">Sent changes object</label>
+  <span class="layout-padding flex" ng-bind="vm.savedObject"></span>
+  <div>Examples simulate $http calls</div>
+</md-whiteframe>
 <!-- build:js(src) scripts/vendor.js -->
 <!-- bower:js -->
 <!-- run `gulp inject` to automatically populate bower script dependencies -->
