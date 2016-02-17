@@ -7,6 +7,7 @@
 (function () {
   'use strict';
 
+  autoSaveForm.$inject = ["autoSaveForm"];
   angular.module('angular-auto-save-form', [])
     .provider('autoSaveForm', autoSaveFormProvider)
     .directive('autoSaveForm', autoSaveForm)
@@ -148,7 +149,6 @@
       link: saveFormLink
     };
   }
-  autoSaveForm.$inject = ["autoSaveForm"];
 
   /** @ngInject */
   function autoSaveFormProperty() {

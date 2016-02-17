@@ -1,17 +1,17 @@
 {
   "name": "angular-auto-save-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": [
     "dist/auto-save-form.js",
     "dist/auto-save-form.css"
   ],
   "dependencies": {
-    "angular": "~1.4.8",
-    "lodash": "~3.10.1"
+    "angular": "~1.5.0",
+    "lodash": "~4.5.0"
   },
   "devDependencies": {
-    "angular-material": "~1.0.1",
-    "angular-mocks": "~1.4.8",
+    "angular-material": "~1.0.5",
+    "angular-mocks": "~1.5.0",
     "angular-mocke2e-maydelay": "~1.0.0"
   },
   "homepage": "https://github.io/tiberiuzuld/angular-auto-save-form",
