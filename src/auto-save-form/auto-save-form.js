@@ -57,7 +57,6 @@
 
     function saveFormLink(scope, element, attributes) {
       var formModel = scope.$eval(attributes.name);
-      var saveFormCallback = scope.$eval(attributes.autoSaveForm);
       var saveFormAuto = scope.$eval(attributes.autoSaveFormMode);
       var saveFormDebounce = scope.$eval(attributes.autoSaveFormDebounce);
       var saveFormSpinner = scope.$eval(attributes.autoSaveFormSpinner);
@@ -111,7 +110,7 @@
 
         formModel.$setPristine();
 
-        var promise = saveFormCallback(controls, event);
+        var promise = scope.$eval(attributes.autoSaveForm)(controls, event);
         if (promise && saveFormSpinner) {
           saveFormSpinnerElement.addClass('spin');
           promise.finally(function () {
