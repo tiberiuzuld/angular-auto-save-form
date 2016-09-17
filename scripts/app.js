@@ -7,6 +7,7 @@
 (function () {
   'use strict';
 
+  IndexMocks.$inject = ["$httpBackend"];
   angular.module('autoSaveFormApp').run(IndexMocks);
 
   /** @ngInject */
@@ -40,12 +41,12 @@
 
     $httpBackend.whenGET(/getData/).respond(user);
   }
-  IndexMocks.$inject = ["$httpBackend"];
 })();
 
 (function () {
   'use strict';
 
+  IndexController.$inject = ["$http"];
   angular.module('autoSaveFormApp').controller('IndexController', IndexController);
 
   /** @ngInject */
@@ -74,12 +75,12 @@
       return $http.post('/updateDataNormal', formControls);
     }
   }
-  IndexController.$inject = ["$http"];
 })();
 
 (function () {
   'use strict';
 
+  config.$inject = ["$logProvider", "$compileProvider", "autoSaveFormProvider"];
   angular.module('autoSaveFormApp').config(config);
 
   /** @ngInject */
@@ -93,6 +94,5 @@
     autoSaveFormProvider.setSpinner(true);
     autoSaveFormProvider.setSpinnerPosition('top right');
   }
-  config.$inject = ["$logProvider", "$compileProvider", "autoSaveFormProvider"];
 
 })();

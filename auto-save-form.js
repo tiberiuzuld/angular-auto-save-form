@@ -7,6 +7,7 @@
 (function () {
   'use strict';
 
+  autoSaveForm.$inject = ["$parse", "autoSaveForm"];
   angular.module('angular-auto-save-form', [])
     .provider('autoSaveForm', autoSaveFormProvider)
     .directive('autoSaveForm', autoSaveForm)
@@ -52,12 +53,11 @@
   }
 
   /** @ngInject */
-  function autoSaveForm(autoSaveForm) {
+  function autoSaveForm($parse, autoSaveForm) {
     var spinnerTemplate = '<div class="spinner"></div>';
 
     function saveFormLink(scope, element, attributes) {
       var formModel = scope.$eval(attributes.name);
-      var saveFormCallback = scope.$eval(attributes.autoSaveForm);
       var saveFormAuto = scope.$eval(attributes.autoSaveFormMode);
       var saveFormDebounce = scope.$eval(attributes.autoSaveFormDebounce);
       var saveFormSpinner = scope.$eval(attributes.autoSaveFormSpinner);
@@ -110,8 +110,8 @@
         angular.forEach(formModel, checkForm);
 
         formModel.$setPristine();
-
-        var promise = saveFormCallback(controls, event);
+        var invoker = $parse(attributes.autoSaveForm);
+        var promise = invoker(scope, {controls: controls, $event: event});
         if (promise && saveFormSpinner) {
           saveFormSpinnerElement.addClass('spin');
           promise.finally(function () {
@@ -148,7 +148,6 @@
       link: saveFormLink
     };
   }
-  autoSaveForm.$inject = ["autoSaveForm"];
 
   /** @ngInject */
   function autoSaveFormProperty() {

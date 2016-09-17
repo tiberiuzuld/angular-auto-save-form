@@ -17,7 +17,7 @@
 
 <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" class="flex-50">
   <md-tab label="Auto Save">
-    <ng-form name="autoSaveForm" auto-save-form="vm.updateForm" auto-save-form-debounce="500"
+    <ng-form name="autoSaveForm" auto-save-form="vm.updateForm(controls, $event)" auto-save-form-debounce="500"
              class="layout-column layout-padding">
       <md-input-container>
         <label>Name</label>
@@ -45,7 +45,7 @@
     </ng-form>
   </md-tab>
   <md-tab label="Normal Save">
-    <form name="normalSaveForm" auto-save-form="vm.updateNormalForm" auto-save-form-mode="false"
+    <form name="normalSaveForm" auto-save-form="vm.updateNormalForm(controls, $event)" auto-save-form-mode="false"
           class="layout-column layout-padding">
       <md-input-container>
         <label>Name</label>
