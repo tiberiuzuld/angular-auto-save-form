@@ -32,7 +32,7 @@ Include 'autoSaveForm' as a dependency of your module like this:
 Directive requires that form and input elements to have [name] attribute
 
 ```html
-  <ng-form name="myForm" auto-save-form="callback"> 
+  <ng-form name="myForm" auto-save-form="callback(controls)"> 
     <input ng-model="user.name" name="name"/>
     <input ng-model="user.email" name="email"/>
   </ng-form>
@@ -52,7 +52,7 @@ For radio inputs or if you want to group inputs on the same property use the [au
 on one of the inputs and prefix the input name with a group name
 
 ```html
-  <ng-form name="myForm" auto-save-form="callback"> 
+  <ng-form name="myForm" auto-save-form="callback(controls)"> 
     <input type="radio" ng-model="user.gender" name="inputGroupName.gender1" 
       auto-save-form-property="inputGroupName.gender" value="male"/>Male
     <input type="radio" ng-model="user.gender" name="inputGroupName.gender2" value="female"/>Female
@@ -125,7 +125,7 @@ Example:
 ###### Warning: Mode false works only with form tag see [this issue](https://github.com/angular/angular.js/issues/2513)  
 
 ```html
-  <form name="myForm" auto-save-form="callback" auto-save-form-mode="boolean"> 
+  <form name="myForm" auto-save-form="callback(controls, $event)" auto-save-form-mode="boolean"> 
     <input ng-model="username" name="user"/>
   </form>
 ```
@@ -134,7 +134,7 @@ Which expects a scope setup like the following:
 ```JavaScript
   $scope.username = "Jon Doe";
   
-  $scope.callback = function(controls, event){ // controls = {'user': 'Jon Doe'}, event={formSubmitEvent}
+  $scope.callback = function(controls, $event){ // controls = {'user': 'Jon Doe'}, $event={formSubmitEvent}
       $http.post('saveDataUrl', controls);
   };
 ```
