@@ -19,10 +19,12 @@
   <md-tab label="Auto Save">
     <ng-form name="autoSaveForm" auto-save-form="vm.updateForm(controls, $event)" auto-save-form-debounce="500"
              class="layout-column layout-padding">
-      <md-input-container>
-        <label>Name</label>
-        <input ng-model="vm.user.name" name="name" required minlength="3"/>
-      </md-input-container>
+      <ng-form name="userNameForm" class="layout-column">
+        <md-input-container>
+          <label>Name</label>
+          <input ng-model="vm.user.name" name="name" required minlength="3"/>
+        </md-input-container>
+      </ng-form>
       <md-input-container>
         <label>City</label>
         <input ng-model="vm.user.city" name="city" required minlength="3"/>

@@ -107,7 +107,7 @@
         }
         var controls = {};
         //only way to get form controls if angular doesn't implement $getControls on form object
-        angular.forEach(formModel, checkForm);
+        cycleForm(formModel);
 
         formModel.$setPristine();
         var invoker = $parse(attributes.autoSaveForm);
@@ -118,13 +118,22 @@
             saveFormSpinnerElement.removeClass('spin');
           });
         }
+
+        function cycleForm(formModel) {
+          angular.forEach(formModel, checkForm);
+        }
+
         function checkForm(value, key) {
           if (key[0] !== '$' && key[0] !== '.' && value.$dirty) {
-            var keys = key.split(/\./);
-            if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
-              keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
+            if (value.hasOwnProperty('$submitted')) { //check nestedForm
+              cycleForm(value);
+            } else {
+              var keys = key.split(/\./);
+              if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
+                keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
+              }
+              constructControlsObject(keys, value.$modelValue, controls);
             }
-            constructControlsObject(keys, value.$modelValue, controls);
           }
         }
 
