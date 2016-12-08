@@ -14,13 +14,18 @@ The directive will call the callback function with a parameter object containing
   bower install angular-auto-save-form --save
 ```
 
+#### Install with npm
+```bash
+  npm install angular-auto-save-form --save
+```
+
 Then add a `<script>` to your `index.html`:
 
 ```html
-  <script src="/bower_components/angular-auto-save-form/auto-save-form.js"></script>
+  <script src="bower_components/angular-auto-save-form/auto-save-form.js"></script>
 ```
 
-Include 'autoSaveForm' as a dependency of your module like this:
+Include 'angular-auto-save-form' as a dependency of your module like this:
 ```JavaScript
   var module = angular.module("example", ["angular-auto-save-form"]);
 ```

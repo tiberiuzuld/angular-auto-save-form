@@ -1,6 +1,6 @@
 {
   "name": "angular-auto-save-form",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": [
     "dist/auto-save-form.js",
     "dist/auto-save-form.css"
@@ -23,7 +23,13 @@
     "url": "https://github.com/tiberiuzuld/angular-auto-save-form.git"
   },
   "description": "Angular auto save form changed inputs",
-  "keywords": "angular, angularjs, save, form, auto, debounce, changed fields",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "auto save form",
+    "debounce",
+    "changed fields"
+  ],
   "authors": [
     "Tiberiu Zuld"
   ],
@@ -38,7 +44,6 @@
     ".editorconfig",
     ".eslintrc",
     ".gitignore",
-    ".yo-rc.json",
     "gulpfile.js",
     "karma.conf.js",
     "protractor.conf.js"
