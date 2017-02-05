@@ -10,9 +10,9 @@
     "lodash": ">=4.x"
   },
   "devDependencies": {
-    "angular-material": "1.1.1",
+    "angular-material": "1.1.3",
     "angular-mocks": "~1.x",
-    "angular-mocke2e-maydelay": "~1.0.1"
+    "angular-mocke2e-maydelay": "~1.0.2"
   },
   "homepage": "https://github.io/tiberiuzuld/angular-auto-save-form",
   "bugs": {
