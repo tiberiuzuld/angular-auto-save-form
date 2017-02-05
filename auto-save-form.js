@@ -1,13 +1,13 @@
 /*
  Angular Auto Save Form
- (c) 2016 Tiberiu Zuld
+ (c) 2017 Tiberiu Zuld
  License: MIT
  */
 
 (function () {
   'use strict';
 
-  autoSaveForm.$inject = ["$parse", "autoSaveForm"];
+  autoSaveForm.$inject = ["$parse", "autoSaveForm", "$log"];
   angular.module('angular-auto-save-form', [])
     .provider('autoSaveForm', autoSaveFormProvider)
     .directive('autoSaveForm', autoSaveForm)
@@ -53,7 +53,7 @@
   }
 
   /** @ngInject */
-  function autoSaveForm($parse, autoSaveForm) {
+  function autoSaveForm($parse, autoSaveForm, $log) {
     var spinnerTemplate = '<div class="spinner"></div>';
 
     function saveFormLink(scope, element, attributes) {
@@ -107,24 +107,42 @@
         }
         var controls = {};
         //only way to get form controls if angular doesn't implement $getControls on form object
-        angular.forEach(formModel, checkForm);
+        cycleForm(formModel);
 
-        formModel.$setPristine();
         var invoker = $parse(attributes.autoSaveForm);
         var promise = invoker(scope, {controls: controls, $event: event});
-        if (promise && saveFormSpinner) {
-          saveFormSpinnerElement.addClass('spin');
-          promise.finally(function () {
-            saveFormSpinnerElement.removeClass('spin');
-          });
+        if (promise) {
+          if (saveFormSpinner) {
+            saveFormSpinnerElement.addClass('spin');
+          }
+          promise
+            .then(function () {
+              formModel.$setPristine();
+            }, $log.error)
+            .finally(function () {
+              if (saveFormSpinner) {
+                saveFormSpinnerElement.removeClass('spin');
+              }
+            });
+        } else {
+          formModel.$setPristine();
         }
+
+        function cycleForm(formModel) {
+          angular.forEach(formModel, checkForm);
+        }
+
         function checkForm(value, key) {
           if (key[0] !== '$' && key[0] !== '.' && value.$dirty) {
-            var keys = key.split(/\./);
-            if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
-              keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
+            if (value.hasOwnProperty('$submitted')) { //check nestedForm
+              cycleForm(value);
+            } else {
+              var keys = key.split(/\./);
+              if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
+                keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
+              }
+              constructControlsObject(keys, value.$modelValue, controls);
             }
-            constructControlsObject(keys, value.$modelValue, controls);
           }
         }
 
