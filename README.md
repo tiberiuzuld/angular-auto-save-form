@@ -166,4 +166,4 @@ In config phase add autoSaveFormProvider
 ### License
  The MIT License
  
- Copyright (c) 2016 Tiberiu Zuld
+ Copyright (c) 2017 Tiberiu Zuld
