@@ -22,6 +22,9 @@ The directive will call the callback function with a parameter object containing
 Then add a `<script>` to your `index.html`:
 
 ```html
+  <link rel="stylesheet" href="bower_components/angular-auto-save-form/dist/auto-save-form.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
   <script src="bower_components/angular-auto-save-form/dist/auto-save-form.js"></script>
 ```
 
