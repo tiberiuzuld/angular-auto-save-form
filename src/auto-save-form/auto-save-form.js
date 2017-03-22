@@ -62,7 +62,7 @@
       var saveFormSpinner = scope.$eval(attributes.autoSaveFormSpinner);
       var saveFormSpinnerPosition = scope.$eval(attributes.autoSaveFormSpinnerPosition);
       var saveFormSpinnerElement;
-
+      scope.autoSaveFormSubmit = getChangedControls;
       if (angular.isUndefined(saveFormAuto)) {
         saveFormAuto = autoSaveForm.autoSaveMode;
       }

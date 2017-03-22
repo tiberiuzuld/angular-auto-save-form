@@ -153,6 +153,12 @@ It is optional if the property is set to false globally
   auto-save-form-mode="boolean"
 ```
 
+### Trigger form submission, useful when the button is outside of the form
+
+```javascript
+  $scope.autoSaveFormSubmit($event);
+```
+
 ### Global configuration
 
 In config phase add autoSaveFormProvider
