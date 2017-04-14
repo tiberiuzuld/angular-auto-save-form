@@ -106,7 +106,7 @@
           return;
         }
         var controls = {};
-        //only way to get form controls if angular doesn't implement $getControls on form object
+
         cycleForm(formModel);
 
         var invoker = $parse(attributes.autoSaveForm);
@@ -129,15 +129,15 @@
         }
 
         function cycleForm(formModel) {
-          angular.forEach(formModel, checkForm);
+          angular.forEach(formModel.$$controls, checkForm);
         }
 
-        function checkForm(value, key) {
-          if (key[0] !== '$' && key[0] !== '.' && value.$dirty) {
+        function checkForm(value) {
+          if (value.$dirty) {
             if (value.hasOwnProperty('$submitted')) { //check nestedForm
               cycleForm(value);
             } else {
-              var keys = key.split(/\./);
+              var keys = value.$name.split(/\./);
               if (scope.autoSaveFormProperties && scope.autoSaveFormProperties[keys[0]]) {
                 keys = scope.autoSaveFormProperties[keys[0]].split(/\./);
               }

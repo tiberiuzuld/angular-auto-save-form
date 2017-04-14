@@ -10,7 +10,6 @@
       name: 'Jon Doe',
       city: 'New York',
       country: 'United States of America',
-      language: 'English',
       gender: 'male'
     };
 
@@ -18,7 +17,6 @@
       name: 'Doe Joe',
       city: 'Paris',
       country: 'France',
-      language: 'French',
       gender: 'female'
     };
 

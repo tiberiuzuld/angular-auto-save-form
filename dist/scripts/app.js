@@ -17,7 +17,6 @@
       name: 'Jon Doe',
       city: 'New York',
       country: 'United States of America',
-      language: 'English',
       gender: 'male'
     };
 
@@ -25,7 +24,6 @@
       name: 'Doe Joe',
       city: 'Paris',
       country: 'France',
-      language: 'French',
       gender: 'female'
     };
 
@@ -66,12 +64,12 @@
     }, $log.error);
 
     vm.updateForm = function (formControls) {
-      vm.savedObject = angular.toJson(formControls);
+      vm.savedObject = angular.toJson(formControls, true);
       return $http.post('/updateData', formControls);
     };
 
     vm.updateNormalForm = function (formControls) {
-      vm.savedObject = angular.toJson(formControls);
+      vm.savedObject = angular.toJson(formControls, true);
       return $http.post('/updateDataNormal', formControls);
     }
   }

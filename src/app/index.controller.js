@@ -20,12 +20,12 @@
     }, $log.error);
 
     vm.updateForm = function (formControls) {
-      vm.savedObject = angular.toJson(formControls);
+      vm.savedObject = angular.toJson(formControls, true);
       return $http.post('/updateData', formControls);
     };
 
     vm.updateNormalForm = function (formControls) {
-      vm.savedObject = angular.toJson(formControls);
+      vm.savedObject = angular.toJson(formControls, true);
       return $http.post('/updateDataNormal', formControls);
     }
   }
