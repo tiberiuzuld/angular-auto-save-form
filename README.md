@@ -1,6 +1,9 @@
 angular-auto-save-form
 ==============
- 
+ [![npm version](https://badge.fury.io/js/angular-auto-save-form.svg)](https://badge.fury.io/js/angular-auto-save-form)
+[![dependencies Status](https://david-dm.org/tiberiuzuld/angular-auto-save-form/status.svg)](https://david-dm.org/tiberiuzuld/angular-auto-save-form)
+[![devDependencies Status](https://david-dm.org/tiberiuzuld/angular-auto-save-form/dev-status.svg)](https://david-dm.org/tiberiuzuld/angular-auto-save-form?type=dev)
+[![downloads](https://img.shields.io/npm/dm/angular-auto-save-form.svg)](https://www.npmjs.com/package/angular-auto-save-form)
  
 ## Description
  
