@@ -8,9 +8,9 @@
   'use strict';
 
   angular.module('angular-auto-save-form', [])
-    .provider('autoSaveForm', autoSaveFormProvider)
-    .directive('autoSaveForm', autoSaveForm)
-    .directive('autoSaveFormProperty', autoSaveFormProperty);
+         .provider('autoSaveForm', autoSaveFormProvider)
+         .directive('autoSaveForm', autoSaveForm)
+         .directive('autoSaveFormProperty', autoSaveFormProperty);
 
   /** @ngInject */
   function autoSaveFormProvider() {
@@ -109,8 +109,11 @@
         cycleForm(formModel);
 
         var invoker = $parse(attributes.autoSaveForm);
-        var promise = invoker(scope, {controls: controls, $event: event});
-        if (promise) {
+        var promise = invoker(scope, {
+          controls: controls,
+          $event: event
+        });
+        if (promise && !saveFormAuto) {
           if (saveFormSpinner) {
             saveFormSpinnerElement.addClass('spin');
           }
